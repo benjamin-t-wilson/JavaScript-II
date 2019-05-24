@@ -1,7 +1,22 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
 
-
+function guy() {
+  console.log("I can only do so much, I only have two arms! I am not an octopus!");
+  function octopus() {
+    console.log("I can only do so much, I only have eight arms! I am not a centipede!");
+    function centipede() {
+      console.log("I can only do so much, I only have 100 arms! I am not a millipede!");
+      function millipede() {
+        console.log("I have a pretty good handle on things.");
+      }
+    millipede();
+    }
+  centipede();
+  }
+octopus();
+}
+guy();
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
 
