@@ -72,18 +72,45 @@ console.log(allCaps);
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+runners.filter(function(currentValue) {
+    if (currentValue.shirt_size == "L") {
+        largeShirts.push(currentValue);
+    }
+});
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+let showMeTheMoney = runners.reduce(function(total, currentValue) {
+    return total + currentValue.donation;
+}, 0);
+ticketPriceTotal.push(showMeTheMoney);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
-
+// Create an array of the runners' emails, so the promotions department may send them their completion certificate.
+let athleteEmails = runners.map(function(currentValue) {
+    return currentValue.email;
+});
+console.log(athleteEmails);
 // Problem 2
-
+// The promotions department wants to give something special to those who donated more than $200. Create an array with the full names of those who donated more than $200
+let bigBallers = []
+runners.filter(function(currentValue) {
+    if (currentValue.donation > 200) {
+        bigBallers.push(`${currentValue.first_name} ${currentValue.last_name}`);
+    }
+});
+console.log(bigBallers);
 // Problem 3
+// Create a new array of the companies with representatives present and sort it alphabetically so that an attendance / sponsorship poster can be made.
+let whoLetTheDogsOut = []
+runners.forEach(function(currentValue) {
+    whoLetTheDogsOut.push(currentValue.company_name);
+    whoLetTheDogsOut.sort();
+});
+console.log(whoLetTheDogsOut);
